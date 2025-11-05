@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 tere
 siin on meie konflikt tekst
 meil on kõik hästi, sest on ülilahe ratmir
+=======
+Tere
+siin on meie konflikti fail
+meil on kõik hästi, sest meie rühmas on ülilahe Helen <3
+>>>>>>> ac3d0f861ef26bf42fed8cc9cd1c257f1fd52dd1
