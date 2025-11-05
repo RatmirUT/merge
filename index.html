@@ -1,33 +1,87 @@
 <!DOCTYPE html>
 <html lang="et">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marie Ilutuba - Galerei</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rochester&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marie Ilutuba - Galerii</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rochester&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="logo">Marie Ilutuba</div>
-            </div>
-            <nav>
-                <a href="hinnakiri.html">Hinnakiri</a>
-                <a href="broneeri.html">Broneeri aeg</a>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <div class="header-content">
+      <div class="logo-section">
+        <div class="logo">Marie Ilutuba</div>
+      </div>
+      <nav>
+        <a href="hinnakiri.html">Hinnakiri</a>
+        <a href="broneeri.html">Broneeri aeg</a>
+      </nav>
+    </div>
+  </header>
 
-    <main>
-        <h1>Galerii</h1>
-    
-    </main>
+  <main>
+    <h1>Galerii</h1>
+    <h2>CSS-only Karussell</h2>
 
-    <footer>
-    </footer>
+    <section class="carousel" aria-label="Pildigalerii">
+      <ol class="carousel__viewport">
+        <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+          <div class="carousel__snapper">
+            <img src="pilt1.jpg" alt="Pilt 1">
+          </div>
+          <a href="#carousel__slide4" class="carousel__prev" aria-label="Mine eelmisele slaidile"></a>
+          <a href="#carousel__slide2" class="carousel__next" aria-label="Mine järgmisele slaidile"></a>
+        </li>
+
+        <li id="carousel__slide2" tabindex="0" class="carousel__slide">
+          <div class="carousel__snapper">
+            <!-- <img src="pilt2.jpg" alt="Pilt 2"> -->
+          </div>
+          <a href="#carousel__slide1" class="carousel__prev" aria-label="Mine eelmisele slaidile"></a>
+          <a href="#carousel__slide3" class="carousel__next" aria-label="Mine järgmisele slaidile"></a>
+        </li>
+
+        <li id="carousel__slide3" tabindex="0" class="carousel__slide">
+          <div class="carousel__snapper">
+            <!-- <img src="pilt3.jpg" alt="Pilt 3"> -->
+          </div>
+          <a href="#carousel__slide2" class="carousel__prev" aria-label="Mine eelmisele slaidile"></a>
+          <a href="#carousel__slide4" class="carousel__next" aria-label="Mine järgmisele slaidile"></a>
+        </li>
+
+        <li id="carousel__slide4" tabindex="0" class="carousel__slide">
+          <div class="carousel__snapper">
+            <!-- <img src="pilt4.jpg" alt="Pilt 4"> -->
+          </div>
+          <a href="#carousel__slide3" class="carousel__prev" aria-label="Mine eelmisele slaidile"></a>
+          <a href="#carousel__slide1" class="carousel__next" aria-label="Mine esimesele slaidile"></a>
+        </li>
+      </ol>
+
+      <aside class="carousel__navigation">
+        <ol class="carousel__navigation-list">
+          <li class="carousel__navigation-item">
+            <a href="#carousel__slide1" class="carousel__navigation-button" aria-label="Slaidi 1 juurde"></a>
+          </li>
+          <li class="carousel__navigation-item">
+            <a href="#carousel__slide2" class="carousel__navigation-button" aria-label="Slaidi 2 juurde"></a>
+          </li>
+          <li class="carousel__navigation-item">
+            <a href="#carousel__slide3" class="carousel__navigation-button" aria-label="Slaidi 3 juurde"></a>
+          </li>
+          <li class="carousel__navigation-item">
+            <a href="#carousel__slide4" class="carousel__navigation-button" aria-label="Slaidi 4 juurde"></a>
+          </li>
+        </ol>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+  </footer>
 </body>
 </html>

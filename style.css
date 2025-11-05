@@ -1,155 +1,124 @@
-body {
-    margin: 0;
-    font-family: "Lato", sans-serif;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #fff;
-    color: #000;
+/* === GALERII KARUSSELL === */
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 30px;
+  background-color: #f0e8e4;
 }
 
-header {
-    background-color: #15BFD2;
-    color: #000;
-    padding: 10px 40px 0 40px;
+/* Karusselli vaateaken */
+.carousel__viewport {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: relative;
+.carousel__slide {
+  position: relative;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
 }
 
-.logo-section {
-    text-align: left;
-}
-
-.logo {
-    font-family: "Rochester", cursive;
-    font-weight: 400;
-    font-style: italic;
-    color: #fff;
-    font-size: 48px;
-}
-
-.subtitle {
-    font-family: "Rochester", cursive;
-    font-weight: 400;
-    font-style: italic;
-    color: #fff;
-    font-size: 24px;
-}
-
-nav {
-    display: flex;
-    gap: 25px;
-    align-items: flex-end;
-    padding-bottom: 10px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 24px;
-    position: relative;
-    transition: color 0.3s;
-    font-family: "Rochester", cursive;
-    font-weight: 400;
-    font-style: italic;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-main {
-    flex: 1;
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 16px;
-    line-height: 1.6;
-}
-
-h1 {
-    font-family: "Rochester", cursive;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 48px;
-    margin-bottom: 25px;
-}
-
-h2 {
-    font-family: "Rochester", cursive;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 35px;
-    margin: 0 0 24px;
-    margin-bottom: 15px;
-}
-
-h3 {
-    font-family: "Rochester", cursive;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 25px;
-    margin: 24px 0 8px;
-    margin-bottom: 15px;
-}
-
-p {
-    margin-bottom: 12px;
-    line-height: 1.6; }
-
-ol, ul { 
-    margin: 12px 0 24px 20px; 
-}
-
-li { 
-    margin-bottom: 6px; 
-}
-
-footer {
-    background-color: #15BFD2;
-    text-align: center;
-    padding: 12px 0;
-    font-size: 14px;
-    margin-top: auto;
-}
-
-.tips ol {
-  counter-reset: item;
-  margin: 16px 0 32px 22px;
-  padding: 0;
-}
-
-.tips li {
-  margin: 18px 0 28px;
-}
-
-.tips li p {
-  margin: 8px 0 10px;
-  line-height: 1.6;
-}
-
-.tip-photo {
+.carousel__snapper {
+  position: relative;
   width: 100%;
-  aspect-ratio: 1400 / 350;
-  object-fit: cover;     
-  object-position: 50% 35%;
-  border-radius: 10px;
-  display: block;
+  height: 100%;
+  background-color: #e9dcd5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: carouselAnimation 24s infinite;
 }
 
-/* telefoni jaoks kui otsustame et on vajalik */
-@media (max-width: 700px) {
-  .header-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* Kui kasutaja viib hiire peale, peatub liikumine */
+.carousel:hover .carousel__snapper,
+.carousel:focus-within .carousel__snapper {
+  animation-play-state: paused;
+}
 
-  nav {
-    align-self: flex-end;
-    padding-top: 10px;
+/* Automaatne liikumine (loop 4 slaidiga) */
+@keyframes carouselAnimation {
+  0%, 20%   { transform: translateX(0%); }
+  25%, 45%  { transform: translateX(-100%); }
+  50%, 70%  { transform: translateX(-200%); }
+  75%, 95%  { transform: translateX(-300%); }
+  100%      { transform: translateX(0%); }
+}
+
+/* Slaidide sees olevad pildid */
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Eelmine / järgmine nupud */
+.carousel__prev,
+.carousel__next {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translateY(-50%);
+  background-color: rgba(184, 155, 138, 0.6);
+  border-radius: 50%;
+  text-indent: -9999px;
+  transition: background-color 0.3s;
+}
+
+.carousel__prev:hover,
+.carousel__next:hover {
+  background-color: rgba(184, 155, 138, 0.9);
+}
+
+.carousel__prev {
+  left: 10px;
+}
+
+.carousel__next {
+  right: 10px;
+}
+
+/* Navigeerimisnupud (väikesed täpid) */
+.carousel__navigation {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carousel__navigation-list {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.carousel__navigation-button {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(184, 155, 138, 0.5);
+  border-radius: 50%;
+  text-indent: -9999px;
+  transition: background-color 0.3s;
+}
+
+.carousel__navigation-button:hover,
+.carousel__navigation-button:focus {
+  background-color: rgba(184, 155, 138, 0.9);
+}
+
+/* Väiksematel ekraanidel */
+@media (max-width: 700px) {
+  .carousel {
+    aspect-ratio: 4 / 3;
   }
 }
